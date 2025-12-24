@@ -1,0 +1,30 @@
+name: chikua
+description: "Simple habit tracker app"
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.1.5+1
+  intl: ^0.20.2
+  keyboard_emoji_picker: ^1.0.3
+  flutter_launcher_icons: ^0.14.4
+  # libraries for local database management
+  path_provider: ^2.1.5
+  isar: ^3.1.0+1
+  isar_flutter_libs: ^3.1.0+1
+  flutter_slidable: ^4.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  isar_generator: ^3.1.0+1
+  build_runner: ^2.4.13
+
+flutter:
+  uses-material-design: true
