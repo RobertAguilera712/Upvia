@@ -13,6 +13,7 @@ dependencies:
   intl: ^0.20.2
   keyboard_emoji_picker: ^1.0.3
   flutter_launcher_icons: ^0.14.4
+  emoji_picker_flutter: ^4.4.0
   # libraries for local database management
   path_provider: ^2.1.5
   isar: ^3.1.0+1
@@ -25,6 +26,17 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   isar_generator: ^3.1.0+1
   build_runner: ^2.4.13
+  package_rename: ^1.10.1
 
 flutter:
   uses-material-design: true
+
+package_rename_config:
+  android:
+    app_name: "Chikua"
+    package_name: "io.github.robertaguilera712.chikua"
+    override_old_package: "com.example.habits" # This cleans up your old folder structure!
+  ios:
+    app_name: "Chikua"
+    bundle_name: "Chikua"
+    bundle_id: "io.github.robertaguilera712.chikua"

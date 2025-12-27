@@ -1,4 +1,4 @@
-package com.example.habits
+package com.example.chikua
 
 import io.flutter.embedding.android.FlutterActivity
 

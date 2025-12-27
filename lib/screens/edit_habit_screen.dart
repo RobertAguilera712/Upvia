@@ -1,4 +1,5 @@
 import 'package:chikua/providers/habits_provider.dart';
+import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:chikua/constants.dart';
 import 'package:chikua/model/habit.dart';
@@ -18,6 +19,7 @@ class _EditHabitScreenState extends State<EditHabitScreen> {
   final _nameController = TextEditingController();
   late String _selectedEmoji;
   bool isNameValid = true;
+  bool _emojiShowing = false;
 
   late String? _colorHex;
   late Color _selectedColor;
@@ -43,6 +45,14 @@ class _EditHabitScreenState extends State<EditHabitScreen> {
   }
 
   void _pickEmoji() async {
+    if (!await KeyboardEmojiPicker()
+        .checkHasEmojiKeyboard()) {
+      // Show some error or fallback UI
+      setState(() {
+        _emojiShowing = true;
+      });
+      return;
+    }
     final emoji = await KeyboardEmojiPicker().pickEmoji();
     if (emoji != null) {
       setState(() {
@@ -71,6 +81,13 @@ class _EditHabitScreenState extends State<EditHabitScreen> {
     }
   }
 
+  void _onEmojiSelected(Category? category, Emoji emoji) {
+    setState(() {
+      _selectedEmoji = emoji.emoji;
+      _emojiShowing = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +103,6 @@ class _EditHabitScreenState extends State<EditHabitScreen> {
       ),
       body: KeyboardEmojiPickerWrapper(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
@@ -108,51 +124,64 @@ class _EditHabitScreenState extends State<EditHabitScreen> {
                     ),
                   ),
                 ),
-                RadioGroup<String>(
-                  groupValue: _colorHex,
-                  onChanged: (String? value) {
-                    setState(() {
-                      _colorHex = value;
-                      _selectedColor = Util.hexToColor(_colorHex!);
-                    });
-                  },
-                  child: GridView.count(
-                    crossAxisCount: 6,
-                    shrinkWrap: true,
-                    children: List.generate(Constants.colors.length, (index) {
-                      Color color = Util.hexToColor(Constants.colors[index]);
-                      return Transform.scale(
-                        scale: 2.0,
-                        child: Radio<String>(
-                          backgroundColor: WidgetStatePropertyAll(color),
-                          overlayColor: WidgetStateColor.resolveWith((states) {
-                            if (states.contains(WidgetState.hovered) ||
-                                states.contains(WidgetState.pressed)) {
-                              return Colors.black12;
-                            }
-                            return color;
-                          }),
-                          activeColor: Colors.black26,
-                          side: BorderSide(color: color, width: 2),
-                          value: Constants.colors[index],
-                          innerRadius: WidgetStatePropertyAll(2),
-                        ),
-                      );
-                    }),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: RadioGroup<String>(
+                    groupValue: _colorHex,
+                    onChanged: (String? value) {
+                      setState(() {
+                        _colorHex = value;
+                        _selectedColor = Util.hexToColor(_colorHex!);
+                      });
+                    },
+                    child: GridView.count(
+                      crossAxisCount: 6,
+                      shrinkWrap: true,
+                      children: List.generate(Constants.colors.length, (index) {
+                        Color color = Util.hexToColor(Constants.colors[index]);
+                        return Transform.scale(
+                          scale: 2.0,
+                          child: Radio<String>(
+                            backgroundColor: WidgetStatePropertyAll(color),
+                            overlayColor: WidgetStateColor.resolveWith((states) {
+                              if (states.contains(WidgetState.hovered) ||
+                                  states.contains(WidgetState.pressed)) {
+                                return Colors.black12;
+                              }
+                              return color;
+                            }),
+                            activeColor: Colors.black26,
+                            side: BorderSide(color: color, width: 2),
+                            value: Constants.colors[index],
+                            innerRadius: WidgetStatePropertyAll(2),
+                          ),
+                        );
+                      }),
+                    ),
                   ),
                 ),
-                TextFormField(
-                  controller: _nameController,
-                  decoration: const InputDecoration(
-                    labelText: "Habit Name",
-                    border: OutlineInputBorder(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: TextFormField(
+                    controller: _nameController,
+                    decoration: const InputDecoration(
+                      labelText: "Habit Name",
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: Util.validateStringField,
+                    onChanged: (value) {
+                      setState(() {
+                        isNameValid = Util.isValidString(value);
+                      });
+                    },
                   ),
-                  validator: Util.validateStringField,
-                  onChanged: (value) {
-                    setState(() {
-                      isNameValid = Util.isValidString(value);
-                    });
-                  },
+                ),
+                Offstage(
+                  offstage: !_emojiShowing,
+                  child: EmojiPicker(
+                    onEmojiSelected: _onEmojiSelected,
+                    // Do something when emoji is tapped (optional)
+                  ),
                 ),
               ],
             ),
