@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:chikua/providers/habits_provider.dart';
-import 'package:chikua/util/util.dart';
-import 'package:chikua/widgets/habit_check.dart';
+import 'package:upvia/providers/habits_provider.dart';
+import 'package:upvia/util/util.dart';
+import 'package:upvia/widgets/habit_check.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 

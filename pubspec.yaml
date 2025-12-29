@@ -1,10 +1,13 @@
-name: chikua
+name: upvia
 description: "Simple habit tracker app"
 publish_to: 'none'
 version: 0.1.0+1
 
 environment:
   sdk: ^3.9.2
+
+isar_version: &isar_version 3.3.0 # define the version to be used
+
 
 dependencies:
   flutter:
@@ -16,16 +19,19 @@ dependencies:
   emoji_picker_flutter: ^4.4.0
   # libraries for local database management
   path_provider: ^2.1.5
-  isar: ^3.1.0+1
-  isar_flutter_libs: ^3.1.0+1
+  isar_community: 
+    version: *isar_version
+  isar_community_flutter_libs: # contains Isar Core
+    version: *isar_version
   flutter_slidable: ^4.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  isar_generator: ^3.1.0+1
-  build_runner: ^2.4.13
+  isar_community_generator: 
+    version: *isar_version
+  build_runner: any
   package_rename: ^1.10.1
 
 flutter:
@@ -33,10 +39,11 @@ flutter:
 
 package_rename_config:
   android:
-    app_name: "Chikua"
-    package_name: "io.github.robertaguilera712.chikua"
-    override_old_package: "com.example.habits" # This cleans up your old folder structure!
+    app_name: "Upvia"
+    package_name: "io.github.robertaguilera712.upvia"
+    # override_old_package: "com.example.habits" # This cleans up your old folder structure!
+    override_old_package: "io.github.robertaguilera712.chikua" # This cleans up your old folder structure!
   ios:
-    app_name: "Chikua"
-    bundle_name: "Chikua"
-    bundle_id: "io.github.robertaguilera712.chikua"
+    app_name: "Upvia"
+    bundle_name: "Upvia"
+    bundle_id: "io.github.robertaguilera712.upvia"

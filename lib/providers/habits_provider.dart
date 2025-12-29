@@ -1,6 +1,6 @@
-import 'package:chikua/model/habit.dart';
+import 'package:isar_community/isar.dart';
+import 'package:upvia/model/habit.dart';
 import 'package:flutter/material.dart';
-import 'package:isar/isar.dart';
 
 class HabitsProvider extends ChangeNotifier {
   final Isar isar;

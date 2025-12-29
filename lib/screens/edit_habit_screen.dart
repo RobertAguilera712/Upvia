@@ -1,9 +1,9 @@
-import 'package:chikua/providers/habits_provider.dart';
+import 'package:upvia/providers/habits_provider.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:chikua/constants.dart';
-import 'package:chikua/model/habit.dart';
-import 'package:chikua/util/util.dart';
+import 'package:upvia/constants.dart';
+import 'package:upvia/model/habit.dart';
+import 'package:upvia/util/util.dart';
 import 'package:keyboard_emoji_picker/keyboard_emoji_picker.dart';
 import 'package:provider/provider.dart';
 

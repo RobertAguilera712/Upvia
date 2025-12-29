@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:chikua/constants.dart';
-import 'package:chikua/model/habit.dart';
-import 'package:chikua/providers/habits_provider.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
+import 'package:upvia/constants.dart';
+import 'package:upvia/model/habit.dart';
+import 'package:upvia/providers/habits_provider.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 

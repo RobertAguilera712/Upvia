@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:chikua/screens/edit_habit_screen.dart';
-import 'package:chikua/screens/habits_screen.dart';
-import 'package:chikua/screens/new_habit_screen.dart';
+import 'package:upvia/screens/edit_habit_screen.dart';
+import 'package:upvia/screens/habits_screen.dart';
+import 'package:upvia/screens/new_habit_screen.dart';
 
 class Constants {
   static final routes = {
