@@ -1,0 +1,11 @@
+{
+  "@@locale": "es",
+  "habitsTitle": "Hábitos",
+  "emptyTitle": "No hay hábitos",
+  "emptySubtitle": "Presiona + para agregar uno",
+
+  "newHabitTitle": "Nuevo Hábito",
+  "editHabitTitle": "Editar Hábito",
+
+  "habitNameLabel": "Nombre del Hábito"
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:upvia/l10n/app_localizations.dart';
 import 'package:upvia/providers/habits_provider.dart';
 import 'package:upvia/util/util.dart';
 import 'package:upvia/widgets/habit_check.dart';
@@ -12,10 +13,12 @@ class HabitsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final habitsProvider = context.watch<HabitsProvider>();
+    final l10n = AppLocalizations.of(context)!;
+    final today = DateTime.now().weekday;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Habits"),
+        title: Text(l10n.habitsTitle),
         actions: [
           IconButton(
             onPressed: () {
@@ -33,10 +36,10 @@ class HabitsScreen extends StatelessWidget {
                 children: [
                   Icon(Icons.list, size: 70),
                   Text(
-                    "No Habits",
+                    l10n.emptyTitle,
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                  Text("Tap the + to add one"),
+                  Text(l10n.emptySubtitle),
                 ],
               ),
             )
@@ -59,11 +62,15 @@ class HabitsScreen extends StatelessWidget {
                           children: List.generate(
                             habitsProvider.weekDays.length,
                             (index) {
+                              final day = habitsProvider.weekDays[index];
                               return Expanded(
                                 child: AspectRatio(
                                   aspectRatio: 1,
                                   child: Container(
                                     decoration: BoxDecoration(
+                                      color: day.weekday == today
+                                          ? Color.fromARGB(15, 0, 0, 0)
+                                          : Colors.transparent,
                                       border: Border.all(
                                         color: Colors.grey,
                                         style: BorderStyle.solid,
@@ -73,11 +80,20 @@ class HabitsScreen extends StatelessWidget {
                                     margin: EdgeInsets.all(4),
                                     child: Center(
                                       child: Text(
-                                        DateFormat("E")
-                                            .format(
-                                              habitsProvider.weekDays[index],
+                                        DateFormat(
+                                              "E",
+                                              Localizations.localeOf(
+                                                context,
+                                              ).toString(),
                                             )
+                                            .format(day)
+                                            .toUpperCase()
                                             .substring(0, 1),
+                                        style: TextStyle(
+                                          fontWeight: day.weekday == today
+                                              ? FontWeight.bold
+                                              : FontWeight.normal,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -117,7 +133,10 @@ class HabitsScreen extends StatelessWidget {
                                 child: InkWell(
                                   onTap: () {
                                     habitsProvider.selectedHabit = habit;
-                                    Navigator.pushNamed(context, '/habits/edit');
+                                    Navigator.pushNamed(
+                                      context,
+                                      '/habits/edit',
+                                    );
                                   },
                                   child: Row(
                                     spacing: 8,
@@ -154,7 +173,7 @@ class HabitsScreen extends StatelessWidget {
                                       isChecked: habit.completionDates.contains(
                                         habitsProvider.weekDays[index],
                                       ),
-                          
+
                                       onCheck: () {
                                         // Habit was unchecked
                                         if (habit.completionDates.contains(

@@ -2,6 +2,7 @@ import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:keyboard_emoji_picker/keyboard_emoji_picker.dart';
 import 'package:upvia/constants.dart';
+import 'package:upvia/l10n/app_localizations.dart';
 import 'package:upvia/model/habit.dart';
 import 'package:upvia/util/util.dart';
 
@@ -89,6 +90,8 @@ class _HabitFormState extends State<HabitForm> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return KeyboardEmojiPickerWrapper(
       child: Form(
         key: _formKey,
@@ -149,8 +152,8 @@ class _HabitFormState extends State<HabitForm> {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: TextFormField(
                 controller: _nameController,
-                decoration: const InputDecoration(
-                  labelText: "Habit Name",
+                decoration: InputDecoration(
+                  labelText: l10n.habitNameLabel,
                   border: OutlineInputBorder(),
                 ),
                 validator: Util.validateStringField,
@@ -168,20 +171,7 @@ class _HabitFormState extends State<HabitForm> {
               ),
             ),
             if (_emojiShowing)
-              Expanded(
-                child: EmojiPicker(
-                  onEmojiSelected: _onEmojiSelected,
-                  // Do something when emoji is tapped (optional)
-                ),
-              ),
-      
-            // Offstage(
-            //   offstage: !_emojiShowing,
-            //   child: EmojiPicker(
-            //     onEmojiSelected: _onEmojiSelected,
-            //     // Do something when emoji is tapped (optional)
-            //   ),
-            // ),
+              Expanded(child: EmojiPicker(onEmojiSelected: _onEmojiSelected)),
           ],
         ),
       ),

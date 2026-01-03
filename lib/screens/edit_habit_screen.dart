@@ -1,3 +1,4 @@
+import 'package:upvia/l10n/app_localizations.dart';
 import 'package:upvia/providers/habits_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:upvia/model/habit.dart';
@@ -39,9 +40,11 @@ class _EditHabitScreenState extends State<EditHabitScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit Habit"),
+        title: Text(l10n.editHabitTitle),
         actions: [
           IconButton(
             onPressed: isNameValid ? _saveHabit : null,

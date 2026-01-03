@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "habitsTitle": "Habits",
+  "emptyTitle": "No Habits",
+  "emptySubtitle": "Tap the + to add one",
+
+  "newHabitTitle": "New Habit",
+  "editHabitTitle": "Edit Habit",
+
+  "habitNameLabel": "Habit Name"
+}

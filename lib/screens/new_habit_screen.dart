@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upvia/constants.dart';
+import 'package:upvia/l10n/app_localizations.dart';
 import 'package:upvia/model/habit.dart';
 import 'package:upvia/providers/habits_provider.dart';
 import 'package:upvia/util/util.dart';
@@ -39,9 +40,12 @@ class _NewHabitScreenState extends State<NewHabitScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
+    
     return Scaffold(
       appBar: AppBar(
-        title: Text("New Habit"),
+        title: Text(l10n.newHabitTitle),
         actions: [
           IconButton(
             onPressed: isNameValid ? _saveHabit : null,

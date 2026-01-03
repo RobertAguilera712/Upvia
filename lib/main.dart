@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:isar_community/isar.dart';
 import 'package:upvia/constants.dart';
+import 'package:upvia/l10n/app_localizations.dart';
 import 'package:upvia/model/habit.dart';
 import 'package:upvia/providers/habits_provider.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +35,14 @@ class MainApp extends StatelessWidget {
         routes: Constants.routes,
         theme: Constants.mainTheme,
         debugShowCheckedModeBanner: false,
-        title: "Habits",
+        title: "Upvia",
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: AppLocalizations.supportedLocales,
       ),
     );
   }
