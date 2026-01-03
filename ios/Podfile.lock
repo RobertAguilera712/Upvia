@@ -2,7 +2,7 @@ PODS:
   - emoji_picker_flutter (0.0.1):
     - Flutter
   - Flutter (1.0.0)
-  - isar_flutter_libs (1.0.0):
+  - isar_community_flutter_libs (1.0.0):
     - Flutter
   - keyboard_emoji_picker (0.0.1):
     - Flutter
@@ -16,7 +16,7 @@ PODS:
 DEPENDENCIES:
   - emoji_picker_flutter (from `.symlinks/plugins/emoji_picker_flutter/ios`)
   - Flutter (from `Flutter`)
-  - isar_flutter_libs (from `.symlinks/plugins/isar_flutter_libs/ios`)
+  - isar_community_flutter_libs (from `.symlinks/plugins/isar_community_flutter_libs/ios`)
   - keyboard_emoji_picker (from `.symlinks/plugins/keyboard_emoji_picker/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
@@ -26,8 +26,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/emoji_picker_flutter/ios"
   Flutter:
     :path: Flutter
-  isar_flutter_libs:
-    :path: ".symlinks/plugins/isar_flutter_libs/ios"
+  isar_community_flutter_libs:
+    :path: ".symlinks/plugins/isar_community_flutter_libs/ios"
   keyboard_emoji_picker:
     :path: ".symlinks/plugins/keyboard_emoji_picker/ios"
   path_provider_foundation:
@@ -38,7 +38,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   emoji_picker_flutter: 8e50ec5caac456a23a78637e02c6293ea0ac8771
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
-  isar_flutter_libs: b69f437aeab9c521821c3f376198c4371fa21073
+  isar_community_flutter_libs: cf478bdca01f7fb2bde0320930a785456748f1ad
   keyboard_emoji_picker: efd8498af617ba0d1c5329406a0a8e5c7dd50b46
   path_provider_foundation: 0b743cbb62d8e47eab856f09262bb8c1ddcfe6ba
   shared_preferences_foundation: 5086985c1d43c5ba4d5e69a4e8083a389e2909e6

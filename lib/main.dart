@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:isar_community/isar.dart';
 import 'package:upvia/constants.dart';
 import 'package:upvia/model/habit.dart';
@@ -8,6 +9,9 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   final dir = await getApplicationDocumentsDirectory();
   final Isar isar = await Isar.open([HabitSchema], directory: dir.path);
 
