@@ -9,14 +9,37 @@ class HabitsProvider extends ChangeNotifier {
 
   Habit? selectedHabit;
 
-  final List<DateTime> weekDays = List.generate(7, (index) {
+  final List<DateTime> fullWeekDays = List.generate(7, (index) {
     final start = DateTime.now();
     return DateTime(start.year, start.month, start.day - 6 + index);
   });
 
+  final List<DateTime> semesterDays = List.generate(25 * 7, (index) {
+    final today = DateTime.now();
+    debugPrint("Today:");
+    debugPrint(today.toString());
+    final start = today.subtract(Duration(days: today.weekday));
+    return DateTime(start.year, start.month, start.day - (25 * 7) + index);
+  });
+
+  final List<DateTime> _weekDays = List.generate(DateTime.now().weekday + 1, (
+    index,
+  ) {
+    final today = DateTime.now();
+    final start = today;
+    return DateTime(
+      start.year,
+      start.month,
+      start.day - (today.weekday) + index,
+    );
+  });
+
+  late DateTime today;
 
   HabitsProvider({required this.isar}) {
     _loadHabits();
+    semesterDays.addAll(_weekDays);
+    today = fullWeekDays.last;
   }
   Future<void> _loadHabits() async {
     _habits = await isar.habits.where().findAll();
@@ -36,6 +59,4 @@ class HabitsProvider extends ChangeNotifier {
     });
     _loadHabits();
   }
-
-
 }

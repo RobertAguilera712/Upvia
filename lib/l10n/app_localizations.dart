@@ -130,6 +130,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Habit Name'**
   String get habitNameLabel;
+
+  /// No description provided for @weeklyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'1 Week'**
+  String get weeklyLabel;
+
+  /// No description provided for @monthlyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'6 Months'**
+  String get monthlyLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -27,6 +27,12 @@ class Util {
     return Color(int.parse(hex, radix: 16));
   }
 
+  static Color reduceColorOpacity(Color color, double amount) {
+    assert(amount >= 0 && amount <= 1, 'Amount must be between 0 and 1');
+    // return color.withOpacity((color.opacity - amount).clamp(0.0, 1.0));
+    return color.withAlpha(amount.clamp(0.0, 1.0).toInt());
+  }
+
   static Color getAccentColor(String hexColor, {double lightnessIncrease = 0.25}) {
     // Remove #
     final hex = hexColor.replaceFirst('#', '');

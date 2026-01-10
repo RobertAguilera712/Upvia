@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:upvia/screens/edit_habit_screen.dart';
+import 'package:upvia/screens/habits_month_screen.dart';
 import 'package:upvia/screens/habits_screen.dart';
+import 'package:upvia/screens/home_screen.dart';
 import 'package:upvia/screens/new_habit_screen.dart';
+import 'package:upvia/screens/tabs_screen.dart';
 
 class Constants {
   static final routes = {
-    '/home': (context) => HabitsScreen(),
+    '/home': (context) => HomeScreen(),
     '/habits/add': (context) => const NewHabitScreen(),
     '/habits/edit': (context) => const EditHabitScreen(),
+    '/habits/month': (context) => const HabitsMonthScreen(),
+    '/tabs': (context) => TabsScreen(),
   };
 
   static final List<String> colors = [
@@ -66,6 +71,13 @@ class Constants {
     //     fontWeight: FontWeight.bold,
     //   ),
     // ),
+    tabBarTheme: TabBarThemeData(
+      labelColor: shadeColor,
+      unselectedLabelColor: shadeColor.withAlpha(255 * 60 ~/ 100),
+      indicator: UnderlineTabIndicator(
+        borderSide: BorderSide(color: shadeColor, width: 2.0),
+      ),
+    ),
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: primaryColor, // Changes the blinking cursor color
       selectionColor: Colors.black12, // Changes the highlight color

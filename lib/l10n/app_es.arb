@@ -7,5 +7,9 @@
   "newHabitTitle": "Nuevo Hábito",
   "editHabitTitle": "Editar Hábito",
 
-  "habitNameLabel": "Nombre del Hábito"
+
+  "habitNameLabel": "Nombre del Hábito",
+
+  "weeklyLabel": "Semanal",
+  "monthlyLabel": "Semestral"
 }

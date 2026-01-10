@@ -25,4 +25,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get habitNameLabel => 'Habit Name';
+
+  @override
+  String get weeklyLabel => '1 Week';
+
+  @override
+  String get monthlyLabel => '6 Months';
 }
